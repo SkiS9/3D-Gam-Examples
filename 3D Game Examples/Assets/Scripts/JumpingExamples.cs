@@ -9,7 +9,7 @@ public class JumpingExamples : MonoBehaviour
     public float GravityModifier = 1f;
     public bool IsOnGround = true;
     
-      private Rigidbody _playerRb;
+
     private float _horizontalinput;
     private float _forwardinput;
     private Rigidbody _playerRigidbody;
@@ -18,7 +18,7 @@ public class JumpingExamples : MonoBehaviour
     void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody>();
-        
+        Physics.gravity *= GravityModifier;
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class JumpingExamples : MonoBehaviour
 
          if(Input.GetKeyDown(KeyCode.Space) && IsOnGround)
         {
-            _playerRb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+            _playerRigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             IsOnGround = false;
         }
     }
